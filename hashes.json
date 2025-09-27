@@ -1,12 +1,12 @@
 {
-    "ShortcutDoctorUSB-1.0.0.jar": {
-        "size": 6608533,
-        "sha256": "8b148c02671dd0b405570f88040cd5156a3d160990ed5e52aaae328d800e341d",
-        "version": "1.0.0"
-    },
-    "ShortcutDoctorUSB-1.0.0.exe": {
-        "size": 33584640,
-        "sha256": "d868459ea71f0cee888e05f2dc627511f8334fa2eb64c2718b300ffc335f632d",
-        "version": "1.0.0"
-    }
+  "ShortcutDoctorUSB-1.0.0.jar": {
+    "size": 6608533,
+    "sha256": "8b148c02671dd0b405570f88040cd5156a3d160990ed5e52aaae328d800e341d",
+    "version": "1.0.0"
+  },
+  "ShortcutDoctorUSB-1.0.0.exe": {
+    "size": 33584640,
+    "sha256": "d868459ea71f0cee888e05f2dc627511f8334fa2eb64c2718b300ffc335f632d",
+    "version": "1.0.0"
+  }
 }
