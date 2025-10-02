@@ -19,8 +19,8 @@ except Exception:
 
 def find_files():
     """Находит все JAR и EXE файлы в текущей директории"""
-    jar_files = glob.glob("*.jar") + glob.glob("*.JAR")
-    exe_files = glob.glob("*.exe") + glob.glob("*.EXE")
+    jar_files = glob.glob("releases/*.jar") + glob.glob("releases/*.JAR")
+    exe_files = glob.glob("releases/*.exe") + glob.glob("releases/*.EXE")
 
     # Исключаем временные файлы и бэкапы
     jar_files = [f for f in jar_files if not any(x in f.lower() for x in ['temp', 'backup', 'old', 'bak'])]
