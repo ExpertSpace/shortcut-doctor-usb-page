@@ -515,7 +515,7 @@
                     </div>
                 </div>
                 <div class="step">
-                    <div class="step-number">5</div>
+                    <div class="step-number">6</div>
                     <div>
                         Для сканирования понадобится <strong>API ключ</strong> от
                         VirusTotal, который можно получить после регистрации
@@ -796,35 +796,37 @@
     }
 
     // Автоматическое обновление ссылок скачивания на основе hashes.json
-async function updateDownloadLinks() {
-  try {
-    const resp = await fetch("hashes.json");
-    if (!resp.ok) return;
-    const data = await resp.json();
+    async function updateDownloadLinks() {
+      try {
+        const resp = await fetch("hashes.json");
+        if (!resp.ok) return;
+        const data = await resp.json();
 
-    const keys = Object.keys(data);
+        const keys = Object.keys(data);
 
-    // Находим актуальные имена файлов
-    const jarKey = keys.find((key) => key.toLowerCase().includes(".jar"));
-    const exeKey = keys.find((key) => key.toLowerCase().includes(".exe"));
+        // Находим актуальные имена файлов
+        const jarKey = keys.find((key) => key.toLowerCase().includes(".jar"));
+        const exeKey = keys.find((key) => key.toLowerCase().includes(".exe"));
 
-    // Обновляем ссылки если нашли файлы
-    const jarLink = document.getElementById("downloadJar");
-    const exeLink = document.getElementById("downloadExe");
+        // Обновляем ссылки если нашли файлы
+        const jarLink = document.getElementById("downloadJar");
+        const exeLink = document.getElementById("downloadExe");
 
-    if (jarKey && jarLink) {
-      jarLink.href = "releases/" + jarKey; // Добавляем папку releases/
-      console.log("Updated JAR link to:", "releases/" + jarKey);
+        if (jarKey && jarLink) {
+          // Используем путь как есть из hashes.json
+          jarLink.href = jarKey;
+          console.log("Updated JAR link to:", jarKey);
+        }
+
+        if (exeKey && exeLink) {
+          // Используем путь как есть из hashes.json
+          exeLink.href = exeKey;
+          console.log("Updated EXE link to:", exeKey);
+        }
+      } catch (error) {
+        console.warn("Error updating download links:", error);
+      }
     }
-
-    if (exeKey && exeLink) {
-      exeLink.href = "releases/" + exeKey; // Добавляем папку releases/
-      console.log("Updated EXE link to:", "releases/" + exeKey);
-    }
-  } catch (error) {
-    console.warn("Error updating download links:", error);
-  }
-}
 
     // Инициализация счетчиков
     async function initializeCounters() {
