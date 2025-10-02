@@ -375,8 +375,7 @@
                         download
                         class="download-btn"
                         id="downloadJar"
-                >⬇️ Скачать JAR</a
-                >
+                >⬇️ Скачать JAR</a>
                 <span class="version"
                 >Версия <span id="jarVersion">—</span> |
               <span id="jarSize">—</span></span
@@ -385,8 +384,7 @@
                     <strong>SHA-256:</strong><br/><span
                         class="hash-value"
                         id="jarHash"
-                >—</span
-                >
+                >—</span>
                 </div>
             </div>
             <div class="download-card exe">
@@ -798,35 +796,35 @@
     }
 
     // Автоматическое обновление ссылок скачивания на основе hashes.json
-    async function updateDownloadLinks() {
-      try {
-        const resp = await fetch("hashes.json");
-        if (!resp.ok) return;
-        const data = await resp.json();
+async function updateDownloadLinks() {
+  try {
+    const resp = await fetch("hashes.json");
+    if (!resp.ok) return;
+    const data = await resp.json();
 
-        const keys = Object.keys(data);
+    const keys = Object.keys(data);
 
-        // Находим актуальные имена файлов
-        const jarKey = keys.find((key) => key.toLowerCase().includes(".jar"));
-        const exeKey = keys.find((key) => key.toLowerCase().includes(".exe"));
+    // Находим актуальные имена файлов
+    const jarKey = keys.find((key) => key.toLowerCase().includes(".jar"));
+    const exeKey = keys.find((key) => key.toLowerCase().includes(".exe"));
 
-        // Обновляем ссылки если нашли файлы
-        const jarLink = document.getElementById("downloadJar");
-        const exeLink = document.getElementById("downloadExe");
+    // Обновляем ссылки если нашли файлы
+    const jarLink = document.getElementById("downloadJar");
+    const exeLink = document.getElementById("downloadExe");
 
-        if (jarKey && jarLink) {
-          jarLink.href = jarKey;
-          console.log("Updated JAR link to:", jarKey);
-        }
-
-        if (exeKey && exeLink) {
-          exeLink.href = exeKey;
-          console.log("Updated EXE link to:", exeKey);
-        }
-      } catch (error) {
-        console.warn("Error updating download links:", error);
-      }
+    if (jarKey && jarLink) {
+      jarLink.href = "releases/" + jarKey; // Добавляем папку releases/
+      console.log("Updated JAR link to:", "releases/" + jarKey);
     }
+
+    if (exeKey && exeLink) {
+      exeLink.href = "releases/" + exeKey; // Добавляем папку releases/
+      console.log("Updated EXE link to:", "releases/" + exeKey);
+    }
+  } catch (error) {
+    console.warn("Error updating download links:", error);
+  }
+}
 
     // Инициализация счетчиков
     async function initializeCounters() {
